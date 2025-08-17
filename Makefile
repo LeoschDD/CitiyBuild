@@ -6,9 +6,10 @@ LIB_DIRS = -Llib
 
 LIBS = -lmingw32 -lSDL3
 
-OPTIMISATION = -O1
+OPTIMISATION = -O3
+VERSION = -std=c++23
 
 SRC = $(wildcard src/*.cpp) $(wildcard imgui/*.cpp)
 
 default:
-	g++ $(SRC) -o $(OUTPUT_DIR)/$(PROJECTNAME) $(INCLUDE_DIRS) $(LIB_DIRS) $(LIBS) $(OPTIMISATION)
+	g++ $(VERSION) $(SRC) -o $(OUTPUT_DIR)/$(PROJECTNAME) $(INCLUDE_DIRS) $(LIB_DIRS) $(LIBS) $(OPTIMISATION)

@@ -1,0 +1,7 @@
+Title CityBuild
+Resolution 1920 1080
+FramerateLimit 60
+Fullscreen 0
+Vsync 1
+
+Renderdistance 20

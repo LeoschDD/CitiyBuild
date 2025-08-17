@@ -1,0 +1,43 @@
+#pragma once
+
+#include "Headers.h"
+#include "Ecs.h"
+#include "Components.h"
+
+class Game;
+
+class State
+{
+protected:
+    Game *m_game;
+    ecs::Registry m_reg;
+    
+    State(Game *game) : m_game(game) {}
+
+public:
+    virtual ~State() = default;
+
+    virtual void handleInput(const float dt) = 0;
+    virtual void update(const float dt) = 0;
+    virtual void render() = 0;
+};
+
+class StartState : public State
+{
+private: 
+
+public:
+    StartState(Game *game);
+
+    void handleInput(const float dt) override;
+    void update(const float dt) override;
+    void render() override;
+
+    void sRender();
+    void sMove(const float dt);
+    void sCollision();
+
+    void spawnCircle();
+};
+
+void DrawCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius);
