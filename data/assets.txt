@@ -1,0 +1,10 @@
+# Textur | Name | Path
+
+Texture playerRun ../assets/Unarmed_Run_full.png
+
+# Animation | Key = name_type | Texturname | Zeit für Framewechsel in Sekunden | Startframe x | Startframe y | Anzahl der Frames | Sprite breite | Sprite höhe
+
+Animation player_runDown playerRun 0.1 0 0 8 64 64
+Animation player_runLeft playerRun 0.1 0 1 8 64 64
+Animation player_runRight playerRun 0.1 0 2 8 64 64
+Animation player_runUp playerRun 0.1 0 3 8 64 64

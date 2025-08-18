@@ -1,6 +1,6 @@
 Title CityBuild
 Resolution 1920 1080
-FramerateLimit 60
+FramerateLimit 240
 Fullscreen 0
 Vsync 1
 

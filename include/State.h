@@ -3,6 +3,7 @@
 #include "Headers.h"
 #include "Ecs.h"
 #include "Components.h"
+#include "Animation.h"
 
 class Game;
 
@@ -11,7 +12,7 @@ class State
 protected:
     Game *m_game;
     ecs::Registry m_reg;
-    
+
     State(Game *game) : m_game(game) {}
 
 public:
@@ -39,5 +40,3 @@ public:
 
     void spawnCircle();
 };
-
-void DrawCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius);

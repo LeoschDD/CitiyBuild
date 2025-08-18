@@ -50,8 +50,8 @@ namespace ecs
 		friend class ComponentManager;
 		friend class Registry;
 		
-		static constexpr uint16_t CHUNK_SIZE = 4096;
-		static constexpr uint16_t PAGE_SIZE = 2048; // page size must be power of 2
+		static constexpr uint16_t CHUNK_SIZE = 16384;
+		static constexpr uint16_t PAGE_SIZE = 4096; // page size must be power of 2
 		static constexpr uint32_t MAX_PAGES = (MAX_ENTITIES + PAGE_SIZE - 1) / PAGE_SIZE;
 
 		using Page = std::array<Index, PAGE_SIZE>;
@@ -149,8 +149,8 @@ namespace ecs
 			return &m_components[(*m_indices[page])[index]];
 		}
 
-		const std::vector<C>& components() const { return m_components; }
-		const std::vector<Entity>& entities() const { return  m_entities; }
+		const std::vector<C> &components() const { return m_components; }
+		const std::vector<Entity> &entities() const { return  m_entities; }
 	};
 
 	//---------------------------------------------
@@ -209,10 +209,10 @@ namespace ecs
 		}
 		
 		template <typename C> 
-		const std::vector<C>& components() const { return pool<C>().components(); }
+		const std::vector<C> &components() const { return pool<C>().components(); }
 
 		template <typename C> 
-		const std::vector<Entity>& entities() const { return pool<C>().entities(); }
+		const std::vector<Entity> &entities() const { return pool<C>().entities(); }
 
 		template <typename C> 
 		ComponentPool<C>& pool()

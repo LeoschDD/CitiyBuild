@@ -71,5 +71,8 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "typeindex": "cpp"
+    },
+    "github.copilot.enable": {
+        "*": false
     }
 }

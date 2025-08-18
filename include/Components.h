@@ -1,5 +1,7 @@
+#pragma once
+
 #include "Ecs.h"
-#include "Headers.h"
+#include "Animation.h"
 
 namespace c
 {
@@ -24,6 +26,14 @@ namespace c
         float radius;
 
         circle(float r) : radius(r) {}
+    };
+
+    ECS_COMPONENT(cAnimation)
+    {
+        bool loop;
+        Animation anim;
+
+        cAnimation(bool loop, Animation anim) : loop(loop), anim(anim) {}
     };
 } 
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "State.h"
-#include "Data.h"
+#include "Assets.h"
 
 class Game
 {
@@ -10,6 +10,7 @@ private:
     SDL_Renderer *m_renderer;
 
     Data *m_data;
+    Assets *m_assets;
 
     std::stack<State*> m_states;
 
@@ -27,9 +28,10 @@ private:
     void changeState(State *state);
     State *peekState();
 
+    bool initData();
     bool initVideo();
     bool initAudio();
-    bool initData();
+    bool initAssets();
     void init();
 
     void clean();
@@ -43,5 +45,7 @@ public:
     SDL_Window *window() {return m_window;}
     SDL_Renderer *renderer() {return m_renderer;}
 
+    Data &data() {return *m_data;}
+    Assets &assets() {return *m_assets;}
     bool &running() {return m_running;}
 };

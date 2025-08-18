@@ -5,6 +5,7 @@
 #include <imgui_impl_sdlrenderer3.h>
 
 #include <SDL3/SDL.h>
+#include <SDL3_img/SDL_image.h>
 
 #include <memory>
 #include <stack>

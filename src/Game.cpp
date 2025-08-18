@@ -27,6 +27,20 @@ State *Game::peekState()
 
 // initialisation
 
+bool Game::initData()
+{
+    m_data = new Data;
+    if (!m_data) 
+    {
+        std::cout << "Error: Data could not be initialized!" << std::endl;
+        return false;
+    }
+    if (!m_data->loadAssetsData("../data/assets.txt")) return false;
+    if (!m_data->loadConfigData("../data/config.txt")) return false;
+
+    return true;
+}
+
 bool Game::initVideo()
 {
     if (SDL_Init(SDL_INIT_VIDEO))
@@ -60,6 +74,7 @@ bool Game::initVideo()
         std::cout << "Error: Video initialisation failed!" << std::endl;
         return false;
     }
+    
 }
 
 bool Game::initAudio()
@@ -76,13 +91,21 @@ bool Game::initAudio()
     }
 }
 
-bool Game::initData()
+bool Game::initAssets()
 {
-    m_data = new Data;
-
-    if (!m_data->loadAssetsData("../data/assets.txt")) return false;
-    if (!m_data->loadConfigData("../data/config.txt")) return false;
-
+    m_assets = new Assets(m_renderer);
+    if (!m_assets)
+    {
+        std::cout << "Error: Assets could not be initialized!" << std::endl;
+    }
+    for (auto& [key, texture] : m_data->textureData())
+    {
+        m_assets->addTexture(texture->key, texture->path);
+    }
+    for (auto& [key, animation] : m_data->animationData())
+    {
+        m_assets->addAnimation(animation->key, animation->textureKey, animation->animationTimer, animation->startFrameX, animation->startFrameY, animation->Frames, animation->width, animation->height);
+    }
     return true;
 }
 
@@ -91,6 +114,7 @@ void Game::init()
     if (!initData()) m_running = false;
     if (!initVideo()) m_running = false;
     if (!initAudio()) m_running = false;
+    if (!initAssets()) m_running = false;
 
     pushState(new StartState(this));
 }
