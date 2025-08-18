@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Headers.h"
-#include "Ecs.h"
-#include "Components.h"
-#include "Animation.h"
+#include "World.h"
 
 class Game;
 
@@ -11,6 +8,7 @@ class State
 {
 protected:
     Game *m_game;
+    World *m_world;
 
     State(Game *game) : m_game(game) {}
 
@@ -28,6 +26,7 @@ private:
 
 public:
     StartState(Game *game);
+    ~StartState();
 
     void handleInput(const float dt) override;
     void update(const float dt) override;

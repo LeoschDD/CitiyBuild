@@ -6,7 +6,7 @@ LIB_DIRS = -Llib
 
 LIBS = -lmingw32 -lSDL3 -lSDL3_image
 
-OPTIMISATION = -O3
+OPTIMISATION = -O1
 VERSION = -std=c++23
 
 SRC = $(wildcard src/*.cpp) $(wildcard imgui/*.cpp)
