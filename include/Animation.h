@@ -11,6 +11,7 @@ private:
 public:
     Sprite() = default;
     Sprite(SDL_Texture *texture) : m_texture(texture) {}
+	Sprite(SDL_Texture *texture, SDL_FRect rect) : m_texture(texture), m_rect(rect) {} 
     Sprite(SDL_Texture *texture, float rectX, float rectY, float rectWidth, float rectHeight) : m_texture(texture), m_rect({rectX, rectY, rectWidth, rectHeight}) {}
     Sprite(SDL_Texture *texture, float rectX, float rectY, float rectWidth, float rectHeight, int x, int y) : m_texture(texture), m_rect({rectX, rectY, rectWidth, rectHeight}), m_x(x), m_y(y) {}
     ~Sprite() = default;
@@ -34,11 +35,11 @@ private:
 
 	std::string m_key{};
 
+	float m_timer{0.f};
+	float m_animationTimer{};
+
 	int m_width{};
 	int m_height{};
-
-	float m_timer{};
-	float m_animationTimer{};
 
 	bool m_hasEnded{ false };
 

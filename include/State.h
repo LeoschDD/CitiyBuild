@@ -11,7 +11,6 @@ class State
 {
 protected:
     Game *m_game;
-    ecs::Registry m_reg;
 
     State(Game *game) : m_game(game) {}
 
@@ -33,10 +32,4 @@ public:
     void handleInput(const float dt) override;
     void update(const float dt) override;
     void render() override;
-
-    void sRender();
-    void sMove(const float dt);
-    void sCollision();
-
-    void spawnCircle();
 };

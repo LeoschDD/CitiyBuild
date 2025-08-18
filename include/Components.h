@@ -2,39 +2,40 @@
 
 #include "Ecs.h"
 #include "Animation.h"
+#include "Assets.h"
 
-namespace c
+ECS_COMPONENT(cID)
 {
-    ECS_COMPONENT(pos)
-    {
-        float x;
-        float y;
+    uint32_t id;
 
-        pos(float x, float y) : x(x), y(y) {}
-    };
+    cID(uint32_t id) 
+        : id(id) {}
+};
 
-    ECS_COMPONENT(vel)
-    {
-        float x;
-        float y;
+ECS_COMPONENT(cPos)
+{
+    int x, y;
 
-        vel(float x, float y) : x(x), y(y) {}
-    };
+    cPos(int x, int y) 
+        : x(x), y(y) {}
+};
 
-    ECS_COMPONENT(circle)
-    {
-        float radius;
+ECS_COMPONENT(cVel)
+{
+    int x, y;
 
-        circle(float r) : radius(r) {}
-    };
+    cVel(int x, int y) 
+        : x(x), y(y) {}
+};
 
-    ECS_COMPONENT(cAnimation)
-    {
-        bool loop;
-        Animation anim;
+ECS_COMPONENT(cAnimation)
+{
+    bool loop;
+    Animation animation;
+    std::string name;
+    std::string type;
 
-        cAnimation(bool loop, Animation anim) : loop(loop), anim(anim) {}
-    };
-} 
-
+    cAnimation(bool loop, Assets* assets, std::string name, std::string type)
+        : loop(loop), animation(*assets->getAnimation(name + "_" + type)), name(name), type(type) {}
+};
 

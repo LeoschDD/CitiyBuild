@@ -1,18 +1,19 @@
 #include "Animation.h"
 
-Animation::Animation(SDL_Texture *texture, std::string key, float animationTimer, int startFrameX, int startFrameY, int Frames, int width, int height) :
-	m_texture(texture),
-	m_sprite(texture),
-	m_startRect({ float(startFrameX * width), float(startFrameY * height), (float)width, (float)height }),
-	m_endRect({ float((startFrameX + Frames - 1) * width), float(startFrameY * height) , (float)width, (float)height }),
-	m_currentRect(m_startRect),
-	m_key(key),
-	m_width(width),
-	m_height(height),
-	m_animationTimer(animationTimer),
-	m_timer(0.0f)
+Animation::Animation(SDL_Texture *texture, std::string key, float animationTimer, int startFrameX, int startFrameY, int Frames, int width, int height) 
+	: m_texture(texture), m_key(key), m_animationTimer(animationTimer), m_width(width), m_height(height)
 {
-	m_sprite.setTextureRect(m_startRect);
+	float startX = startFrameX * width;
+	float startY = startFrameY * height;
+	m_startRect = SDL_FRect({startX, startY, (float)width, (float)height });
+
+	float endX = (startFrameX + Frames - 1) * width;
+	float endY = startFrameY * height;
+	m_endRect = SDL_FRect({endX, endY, (float)width, (float)height});
+
+	m_currentRect = m_startRect;
+
+	m_sprite = Sprite(texture, m_startRect);
 }
 
 void Animation::update(const float dt)

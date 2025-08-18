@@ -70,7 +70,11 @@
         "ratio": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "chrono": "cpp",
+        "filesystem": "cpp",
+        "forward_list": "cpp",
+        "iomanip": "cpp"
     },
     "github.copilot.enable": {
         "*": false
